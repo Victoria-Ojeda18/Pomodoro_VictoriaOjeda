@@ -66,7 +66,7 @@ export default function App() {
     if (run && tiempo > 0) {
       intervalo = setInterval(() => {
         setTiempo(tiempoAnterior => tiempoAnterior - 1); // Reducir el tiempo en un segundo
-      }, 0.5);
+      }, 1000);
     }
 
     if (tiempo === 0 && run) {

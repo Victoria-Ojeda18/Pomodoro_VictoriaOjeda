@@ -1,20 +1,31 @@
-import { Audio } from "expo-av"; // Asegúrate de tener instalado expo-av
-const playSound = async (sonido) => {
-    try {
-      const { sound } = await Audio.Sound.createAsync(
-        (sonido) // Cambia la ruta al sonido que deseas reproducir
-      );
-      await sound.playAsync();
-  
-      // Liberar el recurso después de que termine de reproducirse
-      sound.setOnPlaybackStatusUpdate((status) => {
-        if (status.didJustFinish) {
-          sound.unloadAsync();
-        }
-      });
-    } catch (error) {
-      console.error("Error al reproducir el sonido:", error);
-    }
-  };
+import { Audio } from "expo-av";
 
-  export default playSound; // Solo exportás la función, no la llamás
+let sound; // Variable global para mantener la instancia de sonido
+let reproduciendo = false;
+
+const toggleSound = async (sonido) => {
+  try {
+    if (reproduciendo && sound) {
+      await sound.stopAsync(); // Detener el sonido si está en reproducción
+      await sound.unloadAsync(); // Liberar el recurso
+      reproduciendo = false;
+      return;
+    }
+
+    const { sound: newSound } = await Audio.Sound.createAsync(sonido);
+    sound = newSound;
+    await sound.playAsync();
+    reproduciendo = true;
+
+    sound.setOnPlaybackStatusUpdate((status) => {
+      if (status.didJustFinish) {
+        sound.unloadAsync();
+        reproduciendo = false;
+      }
+    });
+  } catch (error) {
+    console.error("Error al reproducir/detener el sonido:", error);
+  }
+};
+
+export default toggleSound;

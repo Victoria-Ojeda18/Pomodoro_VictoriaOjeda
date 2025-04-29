@@ -19,7 +19,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/pomodoro_espera.jpeg",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.victoria_ojeda.PomodoroVictoria"
     },
     "web": {
       "favicon": "./assets/favicon.png"
