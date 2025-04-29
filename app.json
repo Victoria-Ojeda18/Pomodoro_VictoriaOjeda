@@ -1,14 +1,14 @@
 {
   "expo": {
-    "name": "MyPomodoro",
-    "slug": "MyPomodoro",
+    "name": "PomodoroVictoria",
+    "slug": "PomodoroVictoria",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/pomodoro_espera.jpeg",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
-      "image": "./assets/splash-icon.png",
+      "image": "./assets/pomodoro_espera.jpeg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -17,12 +17,18 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/pomodoro_espera.jpeg",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "781af370-ee78-4a86-9c7f-ff3a4c289d0d"
+      }
+    },
+    "owner": "victoria_ojeda"
   }
 }
